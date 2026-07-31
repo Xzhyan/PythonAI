@@ -1,47 +1,32 @@
+
 # core
-from core import settings
+from core.config import BASE_DIR
 
 # utils
-from utils.console import get_entry, clear
-
-# machine learn
-from machine_learn.salary_predictor import SalaryPredictor
+from utils.console import entry
 
 
 
-class PythonAI():
+class Main:
     def __init__(self):
         self.running = True
-        
-        self.predictor = SalaryPredictor()
-
-    def startup(self):
-        self.predictor.train()
-
-        self.dispatch()
 
     def dispatch(self):
         while self.running:
             try:
-                args = get_entry()
+                args = entry()
 
-                if args[0] == 'clear':
-                    clear()
-
-                else:
-                    age = int(args[0])
-                    salary = self.predictor.predict(age)
-                    print(f"salario previsto: {salary:.2f}")
+            except ValueError as e:
+                print(e)
 
             except Exception as e:
                 print(str(e))
 
 
-
 if __name__ == '__main__':
     try:
-        app = PythonAI()
-        app.startup()
+        app = Main()
+        app.dispatch()
 
     except KeyboardInterrupt:
-        print('Finalizando...')
+        print("\nfinalizando...")

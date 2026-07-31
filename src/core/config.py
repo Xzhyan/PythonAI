@@ -1,12 +1,20 @@
+from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from .constants import BASE_DIR
+
+
+# Paths
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+ENV_PATH = BASE_DIR / '.env'
 
 
 class Settings(BaseSettings):
-    APP_NAME: str
+    NAME: str
+    AUTHOR: str
+    VERSION: str
 
     model_config = SettingsConfigDict(
-        env_file=BASE_DIR / '.env'
+        env_file=ENV_PATH
     )
 
 settings = Settings()
