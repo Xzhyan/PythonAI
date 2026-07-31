@@ -8,4 +8,4 @@ def entry():
     if not entries:
         raise ValueError("você precisa digitar algo")
 
-    return entries.split()
+    return entries
