@@ -8,6 +8,7 @@ from utils.console import entry
 # parser
 from parser.tokenizer import tokenize
 from parser.normalizer import normalize
+from parser.intent_detector import intent_detect
 
 
 class Main:
@@ -23,8 +24,9 @@ class Main:
 
                 parsed.tokens = normalize(parsed.tokens)
 
-                print(parsed.original)
-                print(parsed.tokens)
+                intent = intent_detect(parsed.tokens)
+
+                print(intent)
 
 
             except ValueError as e:
