@@ -4,6 +4,9 @@ from core import settings
 # utils
 from utils.console import entry
 
+# nlp
+from nlp import normalize
+
 
 class PythonIA:
     def __init__(self):
@@ -12,6 +15,10 @@ class PythonIA:
     def user_entry(self):
         while self.running:
             args = entry()
+            print(args)
+
+            # normalize
+            args = normalize(args)
             print(args)
 
 
