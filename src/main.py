@@ -1,5 +1,4 @@
-# utils
-from utils.console import entry
+from utils.console import entry, clear
 
 
 class Main:
@@ -7,11 +6,17 @@ class Main:
         self.running = True
 
     def startup(self):
-        while self.running:            
+        while self.running:
             try:
                 entries = entry()
 
+                if 'clear' in entries:
+                    clear()
+
             except ValueError as e:
+                print(str(e))
+
+            except Exception as e:
                 print(str(e))
 
 
@@ -21,4 +26,4 @@ if __name__ == '__main__':
         app.startup()
 
     except KeyboardInterrupt:
-        print("\nfinalizando...")
+        print("finalizando...")

@@ -1,17 +1,14 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# constants
-from .constants import ENV_FILE
-
 
 class Settings(BaseSettings):
-    APP_NAME: str
-    AUTHOR: str
-    VERSION: str
+    """Configurações do projeto"""
 
-    model_config = SettingsConfigDict(
-        env_file=ENV_FILE
-    )
+    APP_NAME: str = "PythonIA"
+
+    # model_config = SettingsConfigDict(
+    #     env_file=".env"
+    # )
 
 
 settings = Settings()

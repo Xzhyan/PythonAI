@@ -1,10 +1,18 @@
+import subprocess
+
+
+def clear():
+    """Limpa a tela do command line"""
+
+    subprocess.run('cls', shell=True)
+
 
 def entry():
-    """Recebe as entradas do usuário"""
+    """Recebe entras de texto do usuário"""
 
     entries = input(" PythonIA > ")
 
     if not entries:
-        raise ValueError("você precisa digitar alguma coisa...")
+        raise ValueError("Nenhuma entrada foi informada")
 
     return entries
