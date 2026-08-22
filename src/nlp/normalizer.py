@@ -7,7 +7,6 @@ def text_lower(text):
     return text.lower()
 
 
-
 def remove_accents(text):
     """Remove acentos como ex: ~^"""
 

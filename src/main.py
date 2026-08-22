@@ -5,7 +5,8 @@ from utils.console import entry, clear
 
 # nlp
 from nlp import normalize
-
+from nlp import tokenize
+from nlp import Vocabulary
 
 
 class Main:
@@ -20,7 +21,12 @@ class Main:
                 if 'clear' in entries:
                     clear()
 
-                print(normalize(entries))
+                normalized = normalize(entries)
+                tokens = tokenize(normalized)
+
+                vocab = Vocabulary()
+
+                vocab.add_tokens(tokens)
 
             except ValueError as e:
                 print(str(e))
