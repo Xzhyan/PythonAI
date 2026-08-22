@@ -7,11 +7,6 @@ def text_lower(text):
     return text.lower()
 
 
-def whitespace(text):
-    """Remove espaços em branco"""
-
-    return " ".join(text.split())
-
 
 def remove_accents(text):
     """Remove acentos como ex: ~^"""
@@ -24,12 +19,18 @@ def remove_accents(text):
     return no_accents
 
 
+def whitespace(text):
+    """Remove espaços em branco"""
+
+    return " ".join(text.split())
+
+
 def normalize(text):
     """Normaliza o texto para melhor tratamento"""
 
     normalized = text_lower(text)
-    normalized = whitespace(normalized)
     normalized = remove_accents(normalized)
+    normalized = whitespace(normalized)
 
     return normalized
 
