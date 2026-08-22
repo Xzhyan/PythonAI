@@ -1,4 +1,11 @@
+
+# utils
 from utils.console import entry, clear
+
+
+# nlp
+from nlp import normalize
+
 
 
 class Main:
@@ -12,6 +19,8 @@ class Main:
 
                 if 'clear' in entries:
                     clear()
+
+                print(normalize(entries))
 
             except ValueError as e:
                 print(str(e))
