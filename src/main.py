@@ -26,4 +26,4 @@ if __name__ == '__main__':
         app.startup()
 
     except KeyboardInterrupt:
-        print("finalizando...")
+        print("\nFinalizando...")
