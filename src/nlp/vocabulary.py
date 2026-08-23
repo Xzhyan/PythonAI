@@ -1,3 +1,10 @@
+import json
+
+# core
+from core.config import JSON_DIR
+
+# utils
+from utils.functions import read_json
 
 
 class Vocabulary:
@@ -5,7 +12,7 @@ class Vocabulary:
         self.token_to_id = {}
         self.id_to_token = {}
 
-    def add_id_token(self, token):
+    def add_token_id(self, token):
         """Adicionar id ao token"""
 
         if not token in self.token_to_id:
@@ -20,5 +27,9 @@ class Vocabulary:
         """Adiciona id a vários tokens"""
 
         for token in tokens:
-            self.add_id_token(token)
+            self.add_token_id(token)
 
+    def read_vocabulary(self):
+        data = read_json(f"{JSON_DIR}/vocabulary.json")
+
+        print(data)

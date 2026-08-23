@@ -26,7 +26,7 @@ class Main:
 
                 vocab = Vocabulary()
 
-                vocab.add_tokens(tokens)
+                vocab.read_vocabulary()
 
             except ValueError as e:
                 print(str(e))
