@@ -9,6 +9,10 @@ from nlp import tokenize
 from nlp import Vocabulary
 
 
+# cria a instância do Vocabulary
+vocab = Vocabulary()
+
+
 class Main:
     def __init__(self):
         self.running = True
@@ -24,9 +28,7 @@ class Main:
                 normalized = normalize(entries)
                 tokens = tokenize(normalized)
 
-                vocab = Vocabulary()
-
-                vocab.read_vocabulary()
+                vocab.add_tokens(tokens)
 
             except ValueError as e:
                 print(str(e))
@@ -41,4 +43,7 @@ if __name__ == '__main__':
         app.startup()
 
     except KeyboardInterrupt:
+        # salva o vocabulário no json
+        vocab.save_vocabulary("vocabulary.json")
+
         print("\nFinalizando...")

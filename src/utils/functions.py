@@ -1,8 +1,19 @@
 import json
 
 
+def write_json(path, data):
+    """Escreve dados em um arquivo json"""
+
+    try:
+        with open(path, 'w', encoding='utf-8') as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+
+    except FileNotFoundError as e:
+        print(str(e))
+
+
 def read_json(path):
-    """Lê qualquer json passado no path e retorna os dados"""
+    """Lê os dados de um arquivo json"""
 
     try:
         with open(path, 'r', encoding='utf-8') as file:

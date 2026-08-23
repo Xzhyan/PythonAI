@@ -1,6 +1,11 @@
 {
     "<PAD>": 0,
     "<UNK>": 1,
-    "o": 2,
-    "brabo": 3
+    "eu": 2,
+    "sou": 3,
+    "o": 4,
+    "xzhyan": 5,
+    "mais": 6,
+    "cls": 8,
+    "clear": 9
 }
