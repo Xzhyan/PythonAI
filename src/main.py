@@ -60,7 +60,5 @@ if __name__ == '__main__':
         app.startup()
 
     except KeyboardInterrupt:
-        # salva o vocabulário no json
-        vocab.save_vocabulary("vocabulary.json")
-
+        vocab.save_vocabulary() # Salva o vocabulário no json antes de finalizar
         print("\nFinalizando...")

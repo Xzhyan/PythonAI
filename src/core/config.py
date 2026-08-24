@@ -8,6 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Diretorio de arquvos JSON
 JSON_DIR = BASE_DIR / 'json'
 
+# Arquivo json do vocabulário
+VOCAB_JSON = JSON_DIR / "vocabulary.json"
+
 
 class Settings(BaseSettings):
     """Configurações do projeto"""

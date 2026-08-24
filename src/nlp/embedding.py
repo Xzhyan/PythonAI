@@ -17,3 +17,4 @@ class Embedding:
         """Pega o vector do token_id"""
 
         return self.weights[token_id]
+
