@@ -4,13 +4,14 @@ from utils.console import entry, clear
 
 
 # nlp
-from nlp import normalize
-from nlp import tokenize
-from nlp import Vocabulary
+from nlp import normalize, tokenize, Vocabulary, Embedding
 
 
 # cria a instância do Vocabulary
 vocab = Vocabulary()
+
+# instancia do Embedding
+embedding = Embedding(12, 3)
 
 
 class Main:
@@ -25,10 +26,26 @@ class Main:
                 if 'clear' in entries:
                     clear()
 
+                # normaliza o texto
                 normalized = normalize(entries)
+
+                # transforma o texto normalizado em tokens
                 tokens = tokenize(normalized)
 
+                # gera o vocabulário dos tokens
                 vocab.add_tokens(tokens)
+
+                # testando o embedding
+                id_list = []
+
+                for token in tokens:
+                    id = vocab.token_to_id[token]
+                    id_list.append(id)
+
+                vector = embedding.get_vector(id_list)
+
+                print(vector)
+
 
             except ValueError as e:
                 print(str(e))
