@@ -1,6 +1,10 @@
 import numpy as np
 
 
+# core
+from core.config import EMBEDDING_FILE
+
+
 class Embedding:
     def __init__(self, vocab_size, embedding_dim):
         """Configurações inicias de tamanho e dimensão do embedding"""
@@ -12,6 +16,15 @@ class Embedding:
             self.vocab_size,
             self.embedding_dim
         )
+
+
+    def save_matriz(self):
+        np.save(EMBEDDING_FILE, self.weights)
+
+
+    def load_matriz(self):
+        self.weights = np.load(EMBEDDING_FILE)
+
 
     def get_vector(self, token_id):
         """Pega o vector do token_id"""
