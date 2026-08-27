@@ -15,6 +15,9 @@ class Vocabulary:
         # Logo que inicia já recupera o vocabulário do json
         self.load_vocabulary()
 
+        # Identificar novos tokens e salvar .json
+        self.update = False
+
 
     def add_token_id(self, token):
         """Adicionar id ao token"""
@@ -25,12 +28,7 @@ class Vocabulary:
             self.token_to_id[token] = token_id
             self.id_to_token[token_id] = token
 
-            # Se um novo token for adicionado o vocabulary json é salvo e recarregado
-            print("Salvando o vocabulary.json")
-            self.save_vocabulary()
-
-            print("Atualizando o vocabulary.json")
-            self.load_vocabulary()
+            self.update = True
 
         return self.token_to_id[token]
 
@@ -41,11 +39,20 @@ class Vocabulary:
         for token in tokens:
             self.add_token_id(token)
 
+        # Se novos tokens forem adicionados o vocabulary.json é salvo e recarregado
+        if self.update:
+            self.save_vocabulary()
+
+            print("Atualizando o vocabulary.json")
+            self.load_vocabulary()
+
+            self.update = False # Depois de atualizar volta o valor de update para Falso
+
 
     def save_vocabulary(self):
         """Salva todos os dados do vocabulário no json"""
 
-        print("\nSalvando o vocabulário antes de finalizar.")
+        print("\nSalvando o vocabulário")
 
         write_json(VOCAB_JSON, self.token_to_id)
 

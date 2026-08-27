@@ -4,7 +4,7 @@ from utils.console import entry, clear
 
 
 # nlp
-from nlp import nlp_control
+from nlp import NLPControl
 
 
 class Main:
@@ -19,8 +19,8 @@ class Main:
                 if 'clear' in entries:
                     clear()
 
-                # Passa as entras para o processamento de linguagem natural
-                entries = nlp_control(entries)
+                nlp = NLPControl()
+                nlp.control()
 
             except ValueError as e:
                 print(str(e))

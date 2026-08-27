@@ -1,1 +1,1 @@
-from .nlp import nlp_control
+from .nlp import NLPControl

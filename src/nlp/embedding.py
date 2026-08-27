@@ -19,11 +19,19 @@ class Embedding:
 
 
     def save_matriz(self):
-        np.save(EMBEDDING_FILE, self.weights)
+        try:
+            np.save(EMBEDDING_FILE, self.weights)
+
+        except Exception as e:
+            print(str(e))
 
 
     def load_matriz(self):
-        self.weights = np.load(EMBEDDING_FILE)
+        try:
+            self.weights = np.load(EMBEDDING_FILE)
+
+        except Exception as e:
+            print(str(e))
 
 
     def get_vector(self, token_id):
