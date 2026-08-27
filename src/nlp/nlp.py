@@ -7,7 +7,15 @@ from .embedding import Embedding
 class NLPControl:
     def __init__(self):
         self.vocab = Vocabulary()
-        self.save_embedding = Embedding(16, 3)
+        self.embedding = Embedding(16, 3)
+
+
+    def load_embedding(self):
+        """Carrega o arquivo embedding.npy de matrizes"""
+
+        # self.embedding.load_matriz()
+
+        return self.embedding.weights
 
     def save_embedding(self):
         """Salva a matriz de todos os tokens do vocabulary"""
@@ -21,7 +29,11 @@ class NLPControl:
         self.embedding.save_matriz()
 
     def control(self):
-        self.save_embedding()
+        # self.save_embedding()
+
+        test = self.load_embedding()
+
+        print(test)
 
 
 # def nlp_control(entries):
