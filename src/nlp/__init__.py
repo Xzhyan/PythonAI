@@ -1,1 +1,1 @@
-from .nlp import NLPControl
+from .nlp import NLProcessing

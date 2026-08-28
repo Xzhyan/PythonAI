@@ -1,39 +1,53 @@
 from .normalizer import normalize
 from .tokenizer import tokenize
-from .vocabulary import Vocabulary
-from .embedding import Embedding
+# from .vocabulary import Vocabulary
+# from .embedding import Embedding
 
 
-class NLPControl:
+class NLProcessing:
     def __init__(self):
-        self.vocab = Vocabulary()
-        self.embedding = Embedding(16, 3)
+        pass
+
+    def manage(self, entries):
+        """Recebe as entradas e faz o tratamento"""
+
+        normalized = normalize(entries)
+        tokens = tokenize(normalized)
+
+        print(tokens)
 
 
-    def load_embedding(self):
-        """Carrega o arquivo embedding.npy de matrizes"""
 
-        # self.embedding.load_matriz()
+# class NLPControl:
+#     def __init__(self):
+#         self.vocab = Vocabulary()
+#         self.embedding = Embedding(16, 3)
 
-        return self.embedding.weights
 
-    def save_embedding(self):
-        """Salva a matriz de todos os tokens do vocabulary"""
+#     def load_embedding(self):
+#         """Carrega o arquivo embedding.npy de matrizes"""
 
-        id_list = []
+#         # self.embedding.load_matriz()
 
-        for id in self.vocab.id_to_token:
-            id_list.append(id)
+#         return self.embedding.weights
 
-        self.embedding.get_vector(id_list)
-        self.embedding.save_matriz()
+#     def save_embedding(self):
+#         """Salva a matriz de todos os tokens do vocabulary"""
 
-    def control(self):
-        # self.save_embedding()
+#         id_list = []
 
-        test = self.load_embedding()
+#         for id in self.vocab.id_to_token:
+#             id_list.append(id)
 
-        print(test)
+#         self.embedding.get_vector(id_list)
+#         self.embedding.save_matriz()
+
+#     def control(self):
+#         # self.save_embedding()
+
+#         test = self.load_embedding()
+
+#         print(test)
 
 
 # def nlp_control(entries):

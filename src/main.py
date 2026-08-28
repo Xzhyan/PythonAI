@@ -2,14 +2,15 @@
 # utils
 from utils.console import entry, clear
 
-
 # nlp
-from nlp import NLPControl
+from nlp import NLProcessing
 
 
 class Main:
     def __init__(self):
         self.running = True
+
+        self.nlp = NLProcessing()
 
     def startup(self):
         while self.running:
@@ -19,8 +20,7 @@ class Main:
                 if 'clear' in entries:
                     clear()
 
-                nlp = NLPControl()
-                nlp.control()
+                self.nlp.manage(entries)
 
             except ValueError as e:
                 print(str(e))
