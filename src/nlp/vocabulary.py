@@ -8,16 +8,17 @@ from utils.functions import write_json, read_json
 
 
 class Vocabulary:
-    def __init__(self):
+    def __init__(self, load=False):
         self.token_to_id = {}
         self.id_to_token = {}
 
-        self.updated = False
+        self.token_count = 0 # contagem de tokens do vocabulary
 
-    def save_vocab(self):
-        """Salva os dados do vocabulary no .json"""
+        self.updated = False # status de atualização do vocabulary
 
-        write_json(VOCAB_JSON, self.token_to_id)
+        # Se a instancia tiver load=True ele já carrega o vocabulary.json
+        if load:
+            self.load_vocab()
 
     def add_token_id(self, token):
         """Verifica se o token possuí ID, se não, adiciona"""
@@ -39,8 +40,23 @@ class Vocabulary:
 
         # verifica se tokens novos foram adicionados e atualiza o vocabulary
         if self.updated:
-            pass
+            self.save_vocab()
 
+    def save_vocab(self):
+        """Salva os dados no vocabulary.json"""
+
+        write_json(VOCAB_JSON, self.token_to_id)
+
+    def load_vocab(self):
+        """Carrega os dados do vocabulary.json"""
+
+        data = read_json(VOCAB_JSON)
+
+        for token, id in data.items():
+            self.token_to_id[token] = token
+            self.id_to_token[id] = id
+
+        self.token_count = len(self.token_to_id)
 
 
 

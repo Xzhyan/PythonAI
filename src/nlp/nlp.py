@@ -1,12 +1,14 @@
 from .normalizer import normalize
 from .tokenizer import tokenize
-# from .vocabulary import Vocabulary
+
+
+from .vocabulary import Vocabulary
 # from .embedding import Embedding
 
 
 class NLProcessing:
     def __init__(self):
-        pass
+        self.vocab = Vocabulary(load=True)
 
     def manage(self, entries):
         """Recebe as entradas e faz o tratamento"""
@@ -14,7 +16,7 @@ class NLProcessing:
         normalized = normalize(entries)
         tokens = tokenize(normalized)
 
-        print(tokens)
+        print(self.vocab.id_to_token)
 
 
 
