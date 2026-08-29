@@ -1,11 +1,4 @@
 {
     "<PAD>": 0,
-    "<UNK>": 1,
-    "eu": 2,
-    "sou": 3,
-    "desenvolvedor": 4,
-    "python": 5,
-    "util": 6,
-    "clear": 7,
-    "cls": 8
+    "<UNK>": 1
 }
